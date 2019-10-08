@@ -3,6 +3,8 @@
 
 import { renderProduct } from '../Products/renderProducts.js';
 import { renderTableRow } from '../shopping-cart/render-table-row.js';
+import * as utils from '../common/utils.js';
+import { instrumentList } from '../Products/instruments.js';
 
 const test = QUnit.test;
 
@@ -60,4 +62,48 @@ test('renders a table row', function(assert) {
     //Assert
     // Make assertions about what is expected valid result
     assert.equal(html, expected);
+});
+
+test('returns item matching given ID', function(assert) {
+    //Arrange
+    // Set up your parameters and expectations
+    const ms20 = {
+        id: 'ms20',
+        name: 'Korg MS-20',
+        image: './assests/ms20.png',
+        description: 'Analog Subtractive Synthesizer',
+        category: 'Synth',
+        price: '$400.00'
+    };
+
+    const expected = ms20;
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+
+    const returnedItem = utils.findById(instrumentList, 'ms20');
+
+    //Assert
+    // Make assertions about what is expected valid result
+    assert.equal(returnedItem, expected);
+});
+
+test('returns total for particular item', function(assert) {
+    //Arrange
+    // Set up your parameters and expectations
+    
+
+    const quantity = 2;
+    const price = 400;
+    const expected = 800;
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+
+    const result = utils.calcLineItem(quantity, price);
+
+
+    //Assert
+    // Make assertions about what is expected valid result
+    assert.equal(result, expected);
 });
