@@ -1,0 +1,29 @@
+.product {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    height: 20px;
+    width: 100px;
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+footer {
+    display: none;
+}
+
+.product span {
+    display: block;
+}
+
+img {
+    height: 200px;
+    width: 300px;
+}
