@@ -14,3 +14,9 @@
 //     category: 'blah',
 //     price: 'blah'
 // };
+import { productList } from './Products/instruments.js';
+
+
+export const renderProduct = () => {
+    return 'test';
+};
