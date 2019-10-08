@@ -11,7 +11,7 @@ const arp2600 = {
     id: 'arp2600',
     name: 'Arp 2600',
     image: './assests/arp2600.png',
-    description: 'Analog Synthesizer',
+    description: 'Rare Vintage Analog Synthesizer',
     category: 'Synth',
     price: '$10000.00'
 };
