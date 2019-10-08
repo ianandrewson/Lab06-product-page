@@ -88,4 +88,4 @@ const superSix = {
     price: '$2800.00'
 };
 
-export const productList = [arp2600, deckards, digitoneKeys, hydra, juno106, moogOne, ms20, polyEvolver, roland808, superSix];
+export const instrumentList = [arp2600, deckards, digitoneKeys, hydra, juno106, moogOne, ms20, polyEvolver, roland808, superSix];
