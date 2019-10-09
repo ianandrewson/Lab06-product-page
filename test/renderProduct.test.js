@@ -70,7 +70,7 @@ test('returns item matching given ID', function(assert) {
     const ms20 = {
         id: 'ms20',
         name: 'Korg MS-20',
-        image: './assests/ms20.png',
+        image: '../assests/ms20.png',
         description: 'Analog Subtractive Synthesizer',
         category: 'Synth',
         price: '$400.00'
@@ -82,10 +82,9 @@ test('returns item matching given ID', function(assert) {
     // Call the function you're testing and set the result to a const
 
     const returnedItem = utils.findById(instrumentList, 'ms20');
-
     //Assert
     // Make assertions about what is expected valid result
-    assert.equal(returnedItem, expected);
+    assert.deepEqual((returnedItem), (expected));
 });
 
 test('returns total for particular item', function(assert) {
