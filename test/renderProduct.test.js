@@ -19,7 +19,7 @@ test('renders a product', function(assert) {
         image: './assests/ms20.png',
         description: 'Analog Subtractive Synthesizer',
         category: 'Synth',
-        price: '$400.00'
+        price: 400
     };
 
     //Act 
@@ -42,10 +42,10 @@ test('renders a table row', function(assert) {
     const ms20 = {
         id: 'ms20',
         name: 'Korg MS-20',
-        image: './assests/ms20.png',
+        image: '../assests/ms20.png',
         description: 'Analog Subtractive Synthesizer',
         category: 'Synth',
-        price: '$400.00'
+        price: 400.00
     };
 
     const ms20Order = {
@@ -73,7 +73,7 @@ test('returns item matching given ID', function(assert) {
         image: '../assests/ms20.png',
         description: 'Analog Subtractive Synthesizer',
         category: 'Synth',
-        price: '$400.00'
+        price: 400.00
     };
 
     const expected = ms20;

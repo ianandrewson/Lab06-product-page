@@ -13,5 +13,18 @@ export const findById = (productArray, id) => {
 };
 
 export const calcLineItem = (quantity, price) => {
-    return quantity * price;
+    const amount = quantity * price;
+    return roundToTwo(amount);
 };
+
+const roundToTwo = function(amountToRound) {
+    return (amountToRound * 100) / 100;
+};
+
+export const toUSD = function(numberToConvert) {
+    return numberToConvert.toLocaleString('en-US', { 
+        style: 'currency', 
+        currency: 'USD' 
+    });
+};
+

@@ -4,7 +4,7 @@ const ms20 = {
     image: '../assests/ms20.png',
     description: 'Analog Subtractive Synthesizer',
     category: 'Synth',
-    price: '$400.00'
+    price: 400.00
 };
 
 const arp2600 = {
@@ -13,7 +13,7 @@ const arp2600 = {
     image: '../assests/arp2600.png',
     description: 'Rare Vintage Analog Synthesizer',
     category: 'Synth',
-    price: '$10000.00'
+    price: 10000.00
 };
 
 const deckards = {
@@ -22,7 +22,7 @@ const deckards = {
     image: '../assests/deckards.png',
     description: 'Analog Phase Distortion Synthesizer',
     category: 'Synth',
-    price: '$3800.00'
+    price: 3800.00
 };
 
 const digitoneKeys = {
@@ -31,7 +31,7 @@ const digitoneKeys = {
     image: '../assests/digitonekeys.png',
     description: 'Digital Frequency Modulation Synthesizer',
     category: 'Synth',
-    price: '$1300.00'
+    price: 1300.00
 };
 
 const hydra = {
@@ -40,7 +40,7 @@ const hydra = {
     image: '../assests/hydra.png',
     description: 'Morphing Wavetable Synthesizer',
     category: 'Synth',
-    price: '$1300.00'
+    price: 1300.00
 };
 
 const juno106 = {
@@ -49,7 +49,7 @@ const juno106 = {
     image: '../assests/juno106.png',
     description: 'Analog Subtractive Synthesizer',
     category: 'Synth',
-    price: '$1800.00'
+    price: 1800.00
 };
 
 const moogOne = {
@@ -58,7 +58,7 @@ const moogOne = {
     image: '../assests/moogone.png',
     description: 'Analog Synthesizer',
     category: 'Synth',
-    price: '$8000.00'
+    price: 8000.00
 };
 
 const polyEvolver = {
@@ -67,7 +67,7 @@ const polyEvolver = {
     image: '../assests/polyevolver.png',
     description: 'Hybrid Synthesizer',
     category: 'Synth',
-    price: '$2500.00'
+    price: 2500.00
 };
 
 const roland808 = {
@@ -76,7 +76,7 @@ const roland808 = {
     image: '../assests/roland808.png',
     description: 'Analog Drum Machine',
     category: 'Drum Machine',
-    price: '$4000.00'
+    price: 4000.00
 };
 
 const superSix = {
@@ -85,7 +85,7 @@ const superSix = {
     image: '../assests/supersix.png',
     description: 'Hybrid Binaural Supersaw Synthesizer',
     category: 'Synth',
-    price: '$2800.00'
+    price: 2800.00
 };
 
 export const instrumentList = [arp2600, deckards, digitoneKeys, hydra, juno106, moogOne, ms20, polyEvolver, roland808, superSix];

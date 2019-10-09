@@ -1,3 +1,5 @@
+import { toUSD } from '../common/utils.js';
+
 export const renderProduct = (instrument) => {
     const newDiv = document.createElement('div');
     newDiv.id = instrument.id;
@@ -19,7 +21,7 @@ export const renderProduct = (instrument) => {
 
     const priceSection = document.createElement('section');
     priceSection.className = 'price';
-    priceSection.textContent = instrument.price;
+    priceSection.textContent = toUSD(instrument.price);
     newDiv.appendChild(priceSection);
 
     const categoryFooter = document.createElement('footer');
