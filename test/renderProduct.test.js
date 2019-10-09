@@ -5,6 +5,7 @@ import { renderProduct } from '../Products/renderProducts.js';
 import { renderTableRow } from '../shopping-cart/render-table-row.js';
 import * as utils from '../common/utils.js';
 import { instrumentList } from '../Products/instruments.js';
+import { cart } from '../Data/cart.js';
 
 const test = QUnit.test;
 
@@ -100,6 +101,26 @@ test('returns total for particular item', function(assert) {
     // Call the function you're testing and set the result to a const
 
     const result = utils.calcLineItem(quantity, price);
+
+
+    //Assert
+    // Make assertions about what is expected valid result
+    assert.equal(result, expected);
+});
+
+test('returns total for entire shopping cart', function(assert) {
+    //Arrange
+    // Set up your parameters and expectations
+    
+
+    const shoppingCartItems = cart;
+    const productList = instrumentList;
+    const expected = '$15,100.00';
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+
+    const result = utils.calcTotalOrder(shoppingCartItems, productList);
 
 
     //Assert

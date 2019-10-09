@@ -1,3 +1,5 @@
+//import { cart } from "../Data/cart";
+
 export const findById = (productArray, id) => {
     const itemIdToFind = id;
     for (let i = 0; i < productArray.length; i++) {
@@ -28,3 +30,13 @@ export const toUSD = function(numberToConvert) {
     });
 };
 
+export const calcTotalOrder = function(cartArray, productArray) {
+    let total = 0;
+    for (let i = 0; i < cartArray.length; i++) {
+        const productLookup = findById(productArray, cartArray[i].id);
+        let lineItemPrice = calcLineItem(cartArray[i].quantity, productLookup.price);
+        total += lineItemPrice;
+    }
+    total = toUSD(total);
+    return total;
+};
