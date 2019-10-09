@@ -8,3 +8,6 @@ for (let i = 0; i < cart.length; i++) {
     let boughtProduct = utils.findById(instrumentList, cart[i].id);
     shoppingCartTable.appendChild(renderTableRow(boughtProduct, cart[i]));
 }
+
+let grandTotalCell = document.getElementById('grand-total');
+grandTotalCell.textContent = utils.calcTotalOrder(cart, instrumentList);
