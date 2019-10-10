@@ -1,4 +1,4 @@
-import { toUSD } from '../common/utils.js';
+import { toUSD, findById } from '../common/utils.js';
 
 export const renderProduct = (instrument) => {
     const newDiv = document.createElement('div');
@@ -32,6 +32,39 @@ export const renderProduct = (instrument) => {
     const addButton = document.createElement('button');
     addButton.textContent = 'Add';
     addButton.value = instrument.id;
+    addButton.addEventListener('click', () => {
+        //Retrieve the existing shopping cart from localStorage
+        //If there is no cart in data in localStorage, use an empty array: []
+    //    console.log(`stored shoppingCart at beginning of event ${(localStorage.getItem('shoppingCart'))}`);
+        if (!localStorage.getItem('shoppingCart')) {
+            localStorage.setItem('shoppingCart', '[]');
+    //        console.log('I MADE A NEW SHOPPING CART');
+        //If there is cart data in localStorage, turn into array using JSON.parse
+        } else {
+    //        console.log('I DIDNT MAKE A NEW SHOPPING CART');
+        }
+    //    console.log(localStorage.getItem('shoppingCart'));
+        let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+    //    console.log(shoppingCart);
+        // Check if the shopping cart already has the line item for this product. You can reuse your findById function for this taks.
+        let lineItem = findById(shoppingCart, instrument.id);
+    //    console.log(lineItem);
+        if (lineItem !== null){
+            lineItem.quantity++;
+        } else {
+            lineItem = { id: instrument.id, quantity: 1 };
+    //        console.log(lineItem);
+            shoppingCart.push(lineItem);
+        }
+    //    console.log(`shopping cart after add: ${JSON.stringify(shoppingCart)}`);
+        localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+    //    console.log(`comparison test of instrument.id and shopping cart object id`);
+    //    console.log(instrument.id === shoppingCart[0].id);
+
+//     If it does exist, increment the quantity.
+//     If it does not exist create a new line item with the following format: 
+
+    });
     newDiv.appendChild(addButton);
 
     return newDiv;
