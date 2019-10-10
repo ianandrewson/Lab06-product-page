@@ -29,6 +29,11 @@ export const renderProduct = (instrument) => {
     categoryFooter.textContent = instrument.category;
     newDiv.appendChild(categoryFooter);
 
+    const addQuantityMenu = document.createElement('input');
+    addQuantityMenu.type = 'number';
+    newDiv.appendChild(addQuantityMenu);
+
+
     const addButton = document.createElement('button');
     addButton.textContent = 'Add';
     addButton.value = instrument.id;
@@ -50,12 +55,13 @@ export const renderProduct = (instrument) => {
         let lineItem = findById(shoppingCart, instrument.id);
     //    console.log(lineItem);
         if (lineItem !== null){
-            lineItem.quantity++;
+            lineItem.quantity += Number(addQuantityMenu.value);
         } else {
-            lineItem = { id: instrument.id, quantity: 1 };
+            lineItem = { id: instrument.id, quantity: addQuantityMenu.value };
     //        console.log(lineItem);
             shoppingCart.push(lineItem);
         }
+        addQuantityMenu.value = null;
         localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
     //    console.log(`comparison test of instrument.id and shopping cart object id`);
     //    console.log(instrument.id === shoppingCart[0].id);
