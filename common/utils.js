@@ -2,10 +2,14 @@
 
 export const findById = (productArray, id) => {
     const itemIdToFind = id;
-    for (let i = 0; i < productArray.length; i++) {
+//    console.log('I AM IN THE FIND BY ID FUNCTION');
+//   console.log(productArray, itemIdToFind);
+//    console.log(productArray.length);
+//    console.log(productArray);
+    for (let i = 0; i < productArray.length; i++) { //!!!!!!!!!!!!!!!!!!
         //debugger;
+//        console.log('I AM IN THE FOR LOOP');
         if (productArray[i].id === itemIdToFind) {
-            //console.log(productArray[i]);
             return productArray[i];
         }
         //console.log(`type of product.id is ${typeof productArray.id}`);

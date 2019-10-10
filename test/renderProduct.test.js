@@ -12,7 +12,7 @@ const test = QUnit.test;
 test('renders a product', function(assert) {
     //Arrange
     // Set up your parameters and expectations
-    const expected = '<div id="ms20" class="instrument"><p class="name">Korg MS-20</p><img src="./assests/ms20.png"><p class="description">Analog Subtractive Synthesizer</p><section class="price">$400.00</section><footer class="category">Synth</footer><button value="ms20">Add</button></div>';
+    const expected = '<div id="ms20" class="instrument"><p class="name">Korg MS-20</p><img src="./assests/ms20.png"><p class="description">Analog Subtractive Synthesizer</p><section class="price">$400.00</section><footer class="category">Synth</footer><input type="number"><button value="ms20">Add</button></div>';
 
     const ms20 = {
         id: 'ms20',
