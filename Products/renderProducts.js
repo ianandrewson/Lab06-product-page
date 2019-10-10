@@ -57,11 +57,12 @@ export const renderProduct = (instrument) => {
         if (lineItem !== null){
             lineItem.quantity += Number(addQuantityMenu.value);
         } else {
-            lineItem = { id: instrument.id, quantity: addQuantityMenu.value };
+            lineItem = { id: instrument.id, quantity: Number(addQuantityMenu.value) };
     //        console.log(lineItem);
             shoppingCart.push(lineItem);
         }
         addQuantityMenu.value = null;
+    //    console.log(shoppingCart);
         localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
     //    console.log(`comparison test of instrument.id and shopping cart object id`);
     //    console.log(instrument.id === shoppingCart[0].id);
