@@ -56,7 +56,7 @@ export const renderProduct = (instrument) => {
     //        console.log(lineItem);
             shoppingCart.push(lineItem);
         }
-    //    console.log(`shopping cart after add: ${JSON.stringify(shoppingCart)}`);
+        console.log(`shopping cart after add: ${JSON.stringify(shoppingCart)}`);
         localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
     //    console.log(`comparison test of instrument.id and shopping cart object id`);
     //    console.log(instrument.id === shoppingCart[0].id);

@@ -3,7 +3,7 @@
 export const findById = (productArray, id) => {
     const itemIdToFind = id;
 //    console.log('I AM IN THE FIND BY ID FUNCTION');
-//    console.log(productArray, itemIdToFind);
+//   console.log(productArray, itemIdToFind);
 //    console.log(productArray.length);
 //    console.log(productArray);
     for (let i = 0; i < productArray.length; i++) { //!!!!!!!!!!!!!!!!!!
