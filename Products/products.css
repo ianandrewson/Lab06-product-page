@@ -55,3 +55,7 @@ section{
     font-family: 'Orbitron', sans-serif;
     margin: 5px;
 }
+
+#logo {
+    font-size: 80px;
+}

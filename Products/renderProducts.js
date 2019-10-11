@@ -1,5 +1,13 @@
 import { toUSD, findById } from '../common/utils.js';
 
+const setCart = (arg1, arg2) => {
+    localStorage.setItem(arg1, arg2);
+};
+
+const makeNewLineItem = (shoppingCart, instrument, addQuantityMenu) => {
+    const lineItem = { id: instrument.id, quantity: Number(addQuantityMenu.value) };
+    shoppingCart.push(lineItem);
+};
 export const renderProduct = (instrument) => {
     const newDiv = document.createElement('div');
     newDiv.id = instrument.id;
@@ -40,36 +48,22 @@ export const renderProduct = (instrument) => {
     addButton.addEventListener('click', () => {
         //Retrieve the existing shopping cart from localStorage
         //If there is no cart in data in localStorage, use an empty array: []
-    //    console.log(`stored shoppingCart at beginning of event ${(localStorage.getItem('shoppingCart'))}`);
         if (!localStorage.getItem('shoppingCart')) {
-            localStorage.setItem('shoppingCart', '[]');
-    //        console.log('I MADE A NEW SHOPPING CART');
-        //If there is cart data in localStorage, turn into array using JSON.parse
-        } else {
-    //        console.log('I DIDNT MAKE A NEW SHOPPING CART');
+            setCart('shoppingCart', '[]');
         }
-    //    console.log(localStorage.getItem('shoppingCart'));
+        //If there is cart data in localStorage, turn into array using JSON.parse
         let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
-    //    console.log(shoppingCart);
         // Check if the shopping cart already has the line item for this product. You can reuse your findById function for this taks.
         let lineItem = findById(shoppingCart, instrument.id);
-    //    console.log(lineItem);
         if (lineItem !== null){
             lineItem.quantity += Number(addQuantityMenu.value);
         } else {
-            lineItem = { id: instrument.id, quantity: Number(addQuantityMenu.value) };
-    //        console.log(lineItem);
-            shoppingCart.push(lineItem);
+            makeNewLineItem(shoppingCart, instrument, addQuantityMenu);
         }
         addQuantityMenu.value = null;
-    //    console.log(shoppingCart);
-        localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
-    //    console.log(`comparison test of instrument.id and shopping cart object id`);
-    //    console.log(instrument.id === shoppingCart[0].id);
-
+        setCart('shoppingCart', JSON.stringify(shoppingCart));
 //     If it does exist, increment the quantity.
 //     If it does not exist create a new line item with the following format: 
-
     });
     newDiv.appendChild(addButton);
 
