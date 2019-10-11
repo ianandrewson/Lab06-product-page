@@ -4,5 +4,14 @@ table {
 
 td {
     text-align: center;
-    border: 1px dotted black;
+    border: 1px dotted rgb(8, 211, 8);
+    color: rgb(8, 211, 8);
+}
+
+button {
+    background-color: rgb(8, 211, 8);
+    font-weight: 800;
+    border: none;
+    height: 30px;
+    width: 100px;
 }
