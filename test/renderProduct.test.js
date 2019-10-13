@@ -178,7 +178,7 @@ test('.getSales returns empty sales array', function(assert) {
 
     //Assert
     // Make assertions about what is expected valid result
-    assert.equal(result, expected);
+    assert.deepEqual(result, expected);
 });
 
 test('.placeOrder correctly adds to sales array', function(assert) {

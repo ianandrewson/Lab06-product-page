@@ -40,7 +40,11 @@ import * as utils from '../common/utils.js';
 // grandTotalCell.textContent = utils.calcTotalOrder(cart, instrumentList);
 
 export const getSales = function() {
-    return 'test';
+    if (!localStorage.getItem('sales')); {
+        localStorage.setItem('sales', '[]');
+    }
+    let salesReport = JSON.parse(localStorage.getItem('sales'));
+    return salesReport;
 };
 
 export const placeOrder = function() {
