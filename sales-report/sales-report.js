@@ -1,5 +1,5 @@
-import { instrumentList } from '../Products/instruments.js';
-import { renderTableRow } from '../shopping-cart/render-table-row.js';
+//import { instrumentList } from '../Products/instruments.js';
+//import { renderTableRow } from '../shopping-cart/render-table-row.js';
 import * as utils from '../common/utils.js';
 
 
@@ -41,7 +41,6 @@ import * as utils from '../common/utils.js';
 
 export const getSales = function() {
     if (!localStorage.getItem('sales')) {
-        console.log('statement was true');
         localStorage.setItem('sales', '[]');
     }
     let salesReport = JSON.parse(localStorage.getItem('sales'));
