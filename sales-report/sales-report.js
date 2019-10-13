@@ -40,7 +40,8 @@ import * as utils from '../common/utils.js';
 // grandTotalCell.textContent = utils.calcTotalOrder(cart, instrumentList);
 
 export const getSales = function() {
-    if (!localStorage.getItem('sales')); {
+    if (!localStorage.getItem('sales')) {
+        console.log('statement was true');
         localStorage.setItem('sales', '[]');
     }
     let salesReport = JSON.parse(localStorage.getItem('sales'));
@@ -48,5 +49,17 @@ export const getSales = function() {
 };
 
 export const placeOrder = function() {
-    return 'test';
+    let previousSales = getSales();
+    let thisSale = JSON.parse(localStorage.getItem('shoppingCart'));
+
+    thisSale.forEach(item => {
+        let previouslySoldItem = utils.findById(previousSales, item.id);
+        if (!previouslySoldItem) {
+            previousSales.push(item);
+        } else {
+            previouslySoldItem.quantity += item.quantity;
+        }
+    });
+    localStorage.setItem('sales', JSON.stringify(previousSales));
+    return;
 };

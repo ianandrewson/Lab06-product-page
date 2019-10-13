@@ -211,9 +211,9 @@ test('.placeOrder correctly adds to sales array', function(assert) {
     Object.defineProperty(window, 'localStorage', {
         value: storageMock(),
     });
-
+    let historicalSales = fakeCart;
     //Set previously exisiting sales-report
-    localStorage.setItem('sales', JSON.stringify(fakeCart));
+    localStorage.setItem('sales', JSON.stringify(historicalSales));
     //Set new shopping cart, representing new order to place
     let strungCart = JSON.stringify([
         {
@@ -246,11 +246,10 @@ test('.placeOrder correctly adds to sales array', function(assert) {
         id: 'deckards',
         quantity: 2
     }]);
-
     //Act 
     // Call the function you're testing and set the result to a const
-
-    const result = placeOrder();
+    placeOrder();
+    const result = localStorage.getItem('sales');
 
 
     //Assert
