@@ -155,10 +155,6 @@ test('.getSales returns empty sales array', function(assert) {
             key: function(i) {
                 var keys = Object.keys(storage);
                 return keys[i] || null;
-            }, 
-            clear: function() {
-                storage = {};
-                return storage;
             }
         };
     }
@@ -167,7 +163,6 @@ test('.getSales returns empty sales array', function(assert) {
         value: storageMock(),
     });
 
-    localStorage.clear();
     const expected = [];
 
     //Act 
