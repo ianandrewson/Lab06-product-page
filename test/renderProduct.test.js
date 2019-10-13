@@ -7,7 +7,7 @@ import * as utils from '../common/utils.js';
 import { instrumentList } from '../Products/instruments.js';
 import { fakeCart } from '../Data/cart.js';
 import { getSales } from '../sales-report/sales-functions.js';
-import { placeOrder } from '../sales-report/sales-functions.js  ';
+import { placeOrder } from '../sales-report/sales-functions.js';
 
 const test = QUnit.test;
 
