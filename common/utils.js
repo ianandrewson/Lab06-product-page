@@ -44,3 +44,11 @@ export const calcTotalOrder = function(cartArray, productArray) {
     total = toUSD(total);
     return total;
 };
+
+export const getLocallyStoredArray = function(arrayName) {
+    if (!localStorage.getItem(arrayName)) {
+        localStorage.setItem(arrayName, '[]');
+    }
+    let storedArray = JSON.parse(localStorage.getItem(arrayName));
+    return storedArray;
+};
