@@ -1,4 +1,4 @@
-import { toUSD, findById } from '../common/utils.js';
+import * as utils from '../common/utils.js';
 
 const setCart = (arg1, arg2) => {
     localStorage.setItem(arg1, arg2);
@@ -29,7 +29,7 @@ export const renderProduct = (instrument) => {
 
     const priceSection = document.createElement('section');
     priceSection.className = 'price';
-    priceSection.textContent = toUSD(instrument.price);
+    priceSection.textContent = utils.toUSD(instrument.price);
     newDiv.appendChild(priceSection);
 
     const categoryFooter = document.createElement('footer');
@@ -46,19 +46,15 @@ export const renderProduct = (instrument) => {
     addButton.textContent = 'Add';
     addButton.value = instrument.id;
     addButton.addEventListener('click', () => {
-        //Retrieve the existing shopping cart from localStorage
-        //If there is no cart in data in localStorage, use an empty array: []
-        if (!localStorage.getItem('shoppingCart')) {
-            setCart('shoppingCart', '[]');
-        }
-        //If there is cart data in localStorage, turn into array using JSON.parse
-        let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+        let shoppingCart = utils.getLocallyStoredArray('shoppingCart');
         // Check if the shopping cart already has the line item for this product. You can reuse your findById function for this taks.
-        let lineItem = findById(shoppingCart, instrument.id);
-        if (lineItem !== null){
-            lineItem.quantity += Number(addQuantityMenu.value);
-        } else {
+
+        //I don't think this can be refactored along with the placeOrder functio in sales-function because the logic seen here requires getting its quantity value from user input, whereas placeOrder only requires stored data.
+        let lineItem = utils.findById(shoppingCart, instrument.id);
+        if (!lineItem){
             makeNewLineItem(shoppingCart, instrument, addQuantityMenu);
+        } else {
+            lineItem.quantity += Number(addQuantityMenu.value);
         }
         addQuantityMenu.value = null;
         setCart('shoppingCart', JSON.stringify(shoppingCart));

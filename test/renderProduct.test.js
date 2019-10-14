@@ -5,7 +5,9 @@ import { renderProduct } from '../Products/renderProducts.js';
 import { renderTableRow } from '../shopping-cart/render-table-row.js';
 import * as utils from '../common/utils.js';
 import { instrumentList } from '../Products/instruments.js';
-import { cart } from '../Data/cart.js';
+import { fakeCart } from '../Data/cart.js';
+import { getSales } from '../sales-report/sales-functions.js';
+import { placeOrder } from '../sales-report/sales-functions.js';
 
 const test = QUnit.test;
 
@@ -113,7 +115,7 @@ test('returns total for entire shopping cart', function(assert) {
     // Set up your parameters and expectations
     
 
-    const shoppingCartItems = cart;
+    const shoppingCartItems = fakeCart;
     const productList = instrumentList;
     const expected = '$15,100.00';
 
@@ -121,6 +123,128 @@ test('returns total for entire shopping cart', function(assert) {
     // Call the function you're testing and set the result to a const
 
     const result = utils.calcTotalOrder(shoppingCartItems, productList);
+
+
+    //Assert
+    // Make assertions about what is expected valid result
+    assert.equal(result, expected);
+});
+
+
+test('.getSales returns empty sales array', function(assert) {
+    //Arrange
+    // Set up your parameters and expectations
+
+    
+    function storageMock() {
+        var storage = {};
+
+        return {
+            setItem: function(key, value) {
+                storage[key] = value || '';
+            },
+            getItem: function(key) {
+                return key in storage ? storage[key] : null;
+            },
+            removeItem: function(key) {
+                delete storage[key];
+            },
+            get length() {
+                return Object.keys(storage).length;
+            },
+            key: function(i) {
+                var keys = Object.keys(storage);
+                return keys[i] || null;
+            }
+        };
+    }
+
+    Object.defineProperty(window, 'localStorage', {
+        value: storageMock(),
+    });
+
+    const expected = [];
+
+    //Act 
+    // Call the function you're testing and set the result to a const
+
+    const result = getSales();
+
+
+    //Assert
+    // Make assertions about what is expected valid result
+    assert.deepEqual(result, expected);
+});
+
+test('.placeOrder correctly adds to sales array', function(assert) {
+    //Arrange
+    // Set up your parameters and expectations
+
+    function storageMock() {
+        var storage = {};
+
+        return {
+            setItem: function(key, value) {
+                storage[key] = value || '';
+            },
+            getItem: function(key) {
+                return key in storage ? storage[key] : null;
+            },
+            removeItem: function(key) {
+                delete storage[key];
+            },
+            get length() {
+                return Object.keys(storage).length;
+            },
+            key: function(i) {
+                var keys = Object.keys(storage);
+                return keys[i] || null;
+            }
+        };
+    }
+
+    Object.defineProperty(window, 'localStorage', {
+        value: storageMock(),
+    });
+    let historicalSales = fakeCart;
+    //Set previously exisiting sales-report
+    localStorage.setItem('sales', JSON.stringify(historicalSales));
+    //Set new shopping cart, representing new order to place
+    let strungCart = JSON.stringify([
+        {
+            id: 'arp2600',
+            quantity: 2
+        }, {
+            id: 'deckards',
+            quantity: 2
+        }
+    ]);
+    localStorage.setItem('shoppingCart', strungCart);
+
+    //old sales report plus new order
+    const expected = JSON.stringify([{
+        id: 'ms20',
+        quantity: 2
+    }, {
+        id: 'roland808',
+        quantity: 1
+    }, {
+        id: 'polyEvolver',
+        quantity: 3
+    }, {
+        id: 'superSix',
+        quantity: 1
+    }, {
+        id: 'arp2600',
+        quantity: 2
+    }, {
+        id: 'deckards',
+        quantity: 2
+    }]);
+    //Act 
+    // Call the function you're testing and set the result to a const
+    placeOrder();
+    const result = localStorage.getItem('sales');
 
 
     //Assert

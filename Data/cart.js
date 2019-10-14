@@ -1,4 +1,4 @@
-export const cart = [{
+export const fakeCart = [{
     id: 'ms20',
     quantity: 2
 }, {
